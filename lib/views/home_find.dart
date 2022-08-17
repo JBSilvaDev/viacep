@@ -46,17 +46,27 @@ class _HomeFindState extends State<HomeFind> {
                 await controller.atualizaEndereco(cepEC.text);
                 Navigator.of(context)
                     .pushNamed('/infos', arguments: cepEC.text);
+                cepEC.clear();
               },
               child: const Text('Buscar Cep'),
             ),
-            SizedBox(height: 20,),
+            SizedBox(
+              height: 20,
+            ),
             Text('Informe o CEP acima (Somente numeros)'),
-           Expanded(child: 
-           Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: const [ Text('Created by : JB Silva', style: TextStyle(fontSize: 15, fontStyle: FontStyle.italic, color: Colors.red),)],
-           )
-           )
+            Expanded(
+                child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: const [
+                Text(
+                  'Created by : JB Silva',
+                  style: TextStyle(
+                      fontSize: 15,
+                      fontStyle: FontStyle.italic,
+                      color: Colors.red),
+                )
+              ],
+            ))
           ],
         ),
       ),
