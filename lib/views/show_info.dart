@@ -44,33 +44,40 @@ class _ShowInfoState extends State<ShowInfo> {
               builder: (context) => ListView(
                 shrinkWrap: true,
                 children: [
-                  Image(
-                      image: AssetImage(
-                          'assets/imgs/$ufName.png')),
+                  Container(
+                    height: MediaQuery.of(context).size.height / 2.5,
+                    child: Image(image: AssetImage('assets/imgs/$ufName.png')),
+                  ),
                   Center(
-                      child: Text(
-                    'Bairro: ${controller.bairro}',
-                    style: TextStyle(
-                      fontSize: 35,
-                    ),
-                  )),
-                  SizedBox(
+                      child: Text('Estado: ${controller.uf}',
+                          style: const TextStyle(
+                            fontSize: 20,
+                          ))),
+                          const SizedBox(
                     height: 20,
                   ),
                   Center(
                       child: Text('Municipio: ${controller.localidade}',
-                          style: TextStyle(
-                            fontSize: 35,
+                          style: const TextStyle(
+                            fontSize: 20,
                           ))),
+                          const SizedBox(
+                    height: 20,
+                  ),
                   Center(
-                      child: Text('Estado: ${controller.uf}',
-                          style: TextStyle(
-                            fontSize: 35,
-                          ))),
+                      child: Text(
+                    'Bairro: ${controller.bairro}',
+                    style: const TextStyle(
+                      fontSize: 20,
+                    ),
+                  )),
+                  const SizedBox(
+                    height: 20,
+                  ),
                   Center(
                       child: Text('DDD Local: ${controller.ddd}',
-                          style: TextStyle(
-                            fontSize: 35,
+                          style: const TextStyle(
+                            fontSize: 20,
                           ))),
                 ],
               ),
