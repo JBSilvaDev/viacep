@@ -1,22 +1,27 @@
+import 'package:buscacep/controller/viacep_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 
 class HomeFind extends StatefulWidget {
-
-  const HomeFind({ Key? key }) : super(key: key);
+  const HomeFind({Key? key}) : super(key: key);
 
   @override
   State<HomeFind> createState() => _HomeFindState();
 }
 
 class _HomeFindState extends State<HomeFind> {
-   final cepEC = TextEditingController();
+  final cepEC = TextEditingController();
+  final controller = ViacepController();
 
-   @override
-
-   Widget build(BuildContext context) {
-       return Scaffold(
-           appBar: AppBar(title: const Text('Busca CEP'),),
-           body: Column(
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Busca CEP'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(10),
+        child: Column(
           children: [
             const Padding(
               padding: EdgeInsets.all(15),
@@ -37,19 +42,17 @@ class _HomeFindState extends State<HomeFind> {
             ElevatedButton(
               onPressed: () async {
                 // Buscando o bairro e coloquei o await para esperar terminar
-                // final bairroCep = await buscarCep(cepEC.text);
-
-                // Chamei o setState para atualizar o estado (variavel bairro) com o dado vindo do viacep
-                // setState(() {
-                //   bairro = bairroCep;
-                // });
+                controller.atualizaEndereco(cepEC.text);
               },
               child: Text('Buscar Cep'),
             ),
             // Coloquei o bairro aqui
-            // Text(bairro)
+            Observer(builder: (_) {
+              return Text(controller.bairro);
+            })
           ],
         ),
+      ),
     );
   }
 }

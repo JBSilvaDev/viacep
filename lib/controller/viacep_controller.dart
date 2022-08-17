@@ -11,7 +11,8 @@ abstract class ViacepControllerBase with Store {
   String bairro = '';
 
   @action
-  void atualizaEndereco(String cep) {
-    viaCep.buscarCep(cep);
+  atualizaEndereco(String cep) async {
+    final bairroCep = await viaCep.buscarCep(cep);
+    bairro = bairroCep;
   }
 }
