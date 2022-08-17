@@ -50,7 +50,13 @@ class _HomeFindState extends State<HomeFind> {
               child: const Text('Buscar Cep'),
             ),
             SizedBox(height: 20,),
-            Text('Informe o CEP acima (Somente numeros)')
+            Text('Informe o CEP acima (Somente numeros)'),
+           Expanded(child: 
+           Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: const [ Text('Created by : JB Silva', style: TextStyle(fontSize: 15, fontStyle: FontStyle.italic, color: Colors.red),)],
+           )
+           )
           ],
         ),
       ),
