@@ -12,6 +12,7 @@ class ShowInfo extends StatefulWidget {
 
 class _ShowInfoState extends State<ShowInfo> {
   final controller = ViacepController();
+  var ufName = 'br';
 
   @override
   void initState() {
@@ -19,6 +20,7 @@ class _ShowInfoState extends State<ShowInfo> {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       var cepEC = ModalRoute.of(context)?.settings.arguments as String;
       await controller.atualizaEndereco(cepEC);
+      ufName = controller.uf.toLowerCase();
     });
   }
 
@@ -44,7 +46,7 @@ class _ShowInfoState extends State<ShowInfo> {
                 children: [
                   Image(
                       image: AssetImage(
-                          'assets/imgs/${controller.uf.toLowerCase()}.png')),
+                          'assets/imgs/$ufName.png')),
                   Center(
                       child: Text(
                     'Bairro: ${controller.bairro}',
