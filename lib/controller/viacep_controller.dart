@@ -9,10 +9,25 @@ abstract class ViacepControllerBase with Store {
   var viaCep = ViacepRepository();
   @observable
   String bairro = '';
+  @observable
+  String cep = '';
+  @observable
+  String localidade = '';
+  @observable
+  String uf = '';
+  @observable
+  String ddd = '';
 
   @action
-  atualizaEndereco(String cep) async {
-    final bairroCep = await viaCep.buscarCep(cep);
-    bairro = bairroCep;
+  Future<Map<String, dynamic>> atualizaEndereco(String cep) async {
+    final endereco = await viaCep.buscarCep(cep);
+
+    bairro = endereco["bairro"];
+    localidade = endereco["localidade"];
+    uf = endereco["uf"];
+    ddd = endereco["ddd"];
+    cep = endereco["cep"];
+
+    return endereco;
   }
 }

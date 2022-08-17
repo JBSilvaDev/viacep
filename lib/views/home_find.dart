@@ -1,6 +1,8 @@
 import 'package:buscacep/controller/viacep_controller.dart';
+import 'package:buscacep/views/show_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:mobx/mobx.dart';
 
 class HomeFind extends StatefulWidget {
   const HomeFind({Key? key}) : super(key: key);
@@ -41,15 +43,14 @@ class _HomeFindState extends State<HomeFind> {
             ),
             ElevatedButton(
               onPressed: () async {
-                // Buscando o bairro e coloquei o await para esperar terminar
-                controller.atualizaEndereco(cepEC.text);
+                await controller.atualizaEndereco(cepEC.text);
+                Navigator.of(context)
+                    .pushNamed('/infos', arguments: cepEC.text);
               },
-              child: Text('Buscar Cep'),
+              child: const Text('Buscar Cep'),
             ),
-            // Coloquei o bairro aqui
-            Observer(builder: (_) {
-              return Text(controller.bairro);
-            })
+            SizedBox(height: 20,),
+            Text('Informe o CEP acima (Somente numeros)')
           ],
         ),
       ),

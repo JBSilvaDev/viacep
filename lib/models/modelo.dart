@@ -3,7 +3,7 @@ import 'dart:convert';
 
 
 class Modelo {
-   String? cep;
+  String? cep;
   String? bairro;
   String? localidade;
   String? uf;

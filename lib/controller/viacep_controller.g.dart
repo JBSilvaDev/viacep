@@ -25,24 +25,85 @@ mixin _$ViacepController on ViacepControllerBase, Store {
     });
   }
 
-  late final _$ViacepControllerBaseActionController =
-      ActionController(name: 'ViacepControllerBase', context: context);
+  late final _$cepAtom =
+      Atom(name: 'ViacepControllerBase.cep', context: context);
 
   @override
-  void atualizaEndereco(String cep) {
-    final _$actionInfo = _$ViacepControllerBaseActionController.startAction(
-        name: 'ViacepControllerBase.atualizaEndereco');
-    try {
-      return super.atualizaEndereco(cep);
-    } finally {
-      _$ViacepControllerBaseActionController.endAction(_$actionInfo);
-    }
+  String get cep {
+    _$cepAtom.reportRead();
+    return super.cep;
+  }
+
+  @override
+  set cep(String value) {
+    _$cepAtom.reportWrite(value, super.cep, () {
+      super.cep = value;
+    });
+  }
+
+  late final _$localidadeAtom =
+      Atom(name: 'ViacepControllerBase.localidade', context: context);
+
+  @override
+  String get localidade {
+    _$localidadeAtom.reportRead();
+    return super.localidade;
+  }
+
+  @override
+  set localidade(String value) {
+    _$localidadeAtom.reportWrite(value, super.localidade, () {
+      super.localidade = value;
+    });
+  }
+
+  late final _$ufAtom = Atom(name: 'ViacepControllerBase.uf', context: context);
+
+  @override
+  String get uf {
+    _$ufAtom.reportRead();
+    return super.uf;
+  }
+
+  @override
+  set uf(String value) {
+    _$ufAtom.reportWrite(value, super.uf, () {
+      super.uf = value;
+    });
+  }
+
+  late final _$dddAtom =
+      Atom(name: 'ViacepControllerBase.ddd', context: context);
+
+  @override
+  String get ddd {
+    _$dddAtom.reportRead();
+    return super.ddd;
+  }
+
+  @override
+  set ddd(String value) {
+    _$dddAtom.reportWrite(value, super.ddd, () {
+      super.ddd = value;
+    });
+  }
+
+  late final _$atualizaEnderecoAsyncAction =
+      AsyncAction('ViacepControllerBase.atualizaEndereco', context: context);
+
+  @override
+  Future<Map<String, dynamic>> atualizaEndereco(String cep) {
+    return _$atualizaEnderecoAsyncAction.run(() => super.atualizaEndereco(cep));
   }
 
   @override
   String toString() {
     return '''
-bairro: ${bairro}
+bairro: ${bairro},
+cep: ${cep},
+localidade: ${localidade},
+uf: ${uf},
+ddd: ${ddd}
     ''';
   }
 }
