@@ -12,7 +12,6 @@ class ShowInfo extends StatefulWidget {
 
 class _ShowInfoState extends State<ShowInfo> {
   final controller = ViacepController();
-  var ufBR = 'ba.png';
 
   @override
   void initState() {
@@ -32,28 +31,49 @@ class _ShowInfoState extends State<ShowInfo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title:  Text('Busca do cep: ${ModalRoute.of(context)?.settings.arguments as String}'),
-        ),
-        body: Column(
+      appBar: AppBar(
+        title: Text(
+            'Busca do cep: ${ModalRoute.of(context)?.settings.arguments as String}'),
+      ),
+      body: Column(
           // mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Observer(
-            builder: (context) => ListView(
-              shrinkWrap: true,
-              children: [
-                
-                Image(image: AssetImage('assets/imgs/$ufBR')),
-
-                Center(child: Text('Bairro: ${controller.bairro}', style: TextStyle(fontSize: 35, ),)),
-                SizedBox(height: 20,),
-                Center(child: Text('Municipio: ${controller.localidade}', style: TextStyle(fontSize: 35, ))),
-                Center(child: Text('Estado: ${controller.uf}', style: TextStyle(fontSize: 35, ))),
-                Center(child: Text('DDD Local: ${controller.ddd}', style: TextStyle(fontSize: 35, ))),
+              builder: (context) => ListView(
+                shrinkWrap: true,
+                children: [
+                  Image(
+                      image: AssetImage(
+                          'assets/imgs/${controller.uf.toLowerCase()}.png')),
+                  Center(
+                      child: Text(
+                    'Bairro: ${controller.bairro}',
+                    style: TextStyle(
+                      fontSize: 35,
+                    ),
+                  )),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Center(
+                      child: Text('Municipio: ${controller.localidade}',
+                          style: TextStyle(
+                            fontSize: 35,
+                          ))),
+                  Center(
+                      child: Text('Estado: ${controller.uf}',
+                          style: TextStyle(
+                            fontSize: 35,
+                          ))),
+                  Center(
+                      child: Text('DDD Local: ${controller.ddd}',
+                          style: TextStyle(
+                            fontSize: 35,
+                          ))),
                 ],
+              ),
             ),
-          ),
-          ]
-        ),);
+          ]),
+    );
   }
 }
